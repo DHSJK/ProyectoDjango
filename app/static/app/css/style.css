@@ -1,0 +1,200 @@
+
+  * {
+  padding: 0%;
+  margin: 0%;
+
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(11, 58, 102);
+    font-family: 'segoe ui';
+    background-size: 100% 1000vh;
+  }
+  
+
+  .navbar {
+    background-color: rgb(11, 58, 102) !important;
+    position: fixed;
+    padding: 20px 0px;
+    color: aliceblue;
+    transition: all .3s;
+  }
+
+  .navbar-var li:hover > ul.dropdown-menu{
+      display: block;
+  }
+.dropdown-menu {
+  position: absolute;
+  background-color: rgb(11, 58, 102);
+  display: none;
+
+}
+
+.dropdown li a{
+  display: block;
+  padding: 15px;
+  color: rgb(255, 255, 255);
+  font-family: open sans-serif;
+  text-decoration: none;
+
+}
+.dropdown li:hover .dropdown-menu{
+  display:block ;
+}
+
+
+#central-content {
+  color:aliceblue;
+  background-color: rgb(31, 116, 173);
+}
+
+
+  .box {
+    width: 200px;
+  }
+  .minibox {
+    width: 50px;
+  }
+  .width {
+    width: 100%;
+  }
+  .max {
+    max-width: 100%;
+  }
+
+  .Encabezado > h1 {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(11, 58, 102) !important;
+    position: relative;
+    color: aliceblue;
+    
+  }
+
+  .Encabezado > p {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    color: rgb(60, 131, 192);
+  }
+    
+
+  .row > .card{
+    background-color: rgb(24, 90, 151) !important;
+    padding: 20px 50px;
+    color: black;
+}
+
+#idcarrusel{
+
+  background-color: rgb(77, 87, 97) !important;
+  padding: 20px 50px;
+
+}
+
+
+  .contacto {
+    background-color: rgb(24, 90, 151);
+    padding: 10px 10px;
+    color:aliceblue;
+    margin-top: 5px;
+  }
+
+  .titulo-contacto {
+    margin:auto;
+    text-align: center;
+    font-family: courier, Arial, Helvetica, sans-serif;
+  }
+
+  .btn {
+    color:aliceblue;
+  }
+
+  .donaciones {
+    background-color: rgb(24, 90, 151);
+    padding: 10px 10px;
+    color:aliceblue;
+    margin-top: 5px;
+  }
+
+  .titulo-donaciones {
+    margin:auto;
+    text-align: center;
+    font-family: courier, Arial, Helvetica, sans-serif;
+  }
+
+  .footer {
+    background-color: rgb(24, 90, 151);
+    padding: 4rem 0;
+    text-align: center;
+    margin-top: -1rem;
+  }
+
+  .footer-container {
+    width: 85%;
+    max-width: 850px;
+    margin: 0 auto;
+    text-align: center;
+    color:aliceblue;
+  }
+
+  .MascotaLover {
+    color: aliceblue;
+    text-align: center;
+  }
+
+  .offcanvas {
+    background-color: rgb(31, 116, 173);
+  }
+
+
+
+  .d-block {
+    width: 100%;
+    object-fit: cover;
+    position: sticky;
+    border-top-left-radius: calc(0.25rem - 10px);
+    border-top-right-radius: calc(0.25rem - 10px);
+  }
+
+
+  
+  .card-columns .card {
+    display: inline-block;
+    width: 100%;
+  }
+  
+  .card-img-top {
+    width: 100%;
+    position: sticky;
+    height: 300px !important;
+    border-top-left-radius: calc(0.25rem - 10px);
+    border-top-right-radius: calc(0.25rem - 10px);
+    object-fit: cover;
+  }
+
+
+  .card {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    color:rgb(7, 21, 32);
+  }
+
+  .card-2 {
+    border: rgb(217, 223, 228);
+    object-fit: cover;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    color:rgb(185, 176, 176);
+    background-color: rgb(31, 116, 173);;
+  }
+
+  .card-text-2 {
+    color: rgb(170, 163, 163);
+    background-color: rgb(31, 116, 173);;
+  }
+
+  

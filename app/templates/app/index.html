@@ -1,0 +1,206 @@
+{% extends 'app/base.html' %}
+
+{% load static %}
+
+{% block contenido %}
+
+    
+
+
+                        <br><br><br><br>
+
+                        <div class="MascotaLover">
+                          <h1 class="display-4">Bienvenidos a tu Tienda Favorida!</h1>
+                          <p class="lead">Aqui podras encontrar los mejores productos para tu regalon de la casa </p>
+                          <hr class="my-4">
+                          <p>Estamos comprometidos a entregarte los mejores servicios y productos para tu mascota</p>
+                          
+
+                    <br><br>
+                    
+                    
+                    
+     <!-- programacion de carrusel de imagenes-->
+
+     <div class="row" >
+      <div class="col-1">
+
+      </div>
+      <div class="col-10">
+          
+  <div id="idcarrusel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#idcarrusel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#idcarrusel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#idcarrusel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#idcarrusel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <a id="div-btn-tienda" href="#"> 
+          <img src="{% static 'app/img/tienda_1.jpg' %}" class="d-block w-100 " alt="Tienda"> </a>
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Alimentos Adecuado</h5>
+            <p>Comida saludable y los mejores productos</p>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <a id="div-btn-nosotros" href="#"> 
+          <img src="{% static 'app/img/nosotros_4.jpg' %}" class="d-block w-100 " alt="nosotros"> </a>
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Quienes somos</h5>
+            <p>Te invitamos a conocer nuestra empresa</p>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <a id="div-btn-donaciones" href="#">
+          <img src="{% static 'app/img/donacion_7.webp' %}" class="d-block w-100 " alt="donaciones"></a>
+          <div class="carousel-caption d-none d-md-block ">
+            <h5>Aportes y donaciones</h5>
+            <p>TTodas estas donacines contribuyen con un mismo fin el de ver a nuestras mascotas felices.</p>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <a id="div-btn-contactos" href="#"> 
+          <img src="{% static 'app/img/contacto_1.jpg' %}" class="d-block w-100 " alt="contactaremos"> </a>
+          <div class="carousel-caption d-none d-md-block ">
+            <h5>Registrate y contactanos</h5>
+            <p>Puedes hacerte socio y entrar a los beneficios y premios de nuestra empresa</p>
+          </div>
+        </div>
+
+
+
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#idcarrusel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Atras</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#idcarrusel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+      </button>
+    </div>
+  </div>
+  <div class="col-1"></div>
+  </div>
+    
+  <br>
+  <hr class="my-4">
+  <br>
+  <div class="MascotaLover">
+    <h1 class="display-4">TODO LO QUE NECESITAS</h1>
+    <p class="lead">Revisa en nuestras categorias </p>
+  </div>
+                              <!-- Caja de imagenes -->
+                    
+                              <div class="row row-cols-1 row-cols-md-3 g-4">
+                                <div class="col">
+                                  <div class="card h-100">
+                                    <a class="div-btn-tienda1" href="#"> 
+                                    <img src="img/ofertas_2.webp" class="card-img-top" alt="..."></a>
+                                    <div class="card-body">
+                                      <h5 class="card-title">Ofertas</h5>
+                                      <p class="card-text">Puedes ir a las seccion de ofertas donde tenemos los mejores productos y precios a costo accesible.</p>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col">
+                                  <div class="card h-100">
+                                    <a class="div-btn-tienda1" href="#"> 
+                                    <img src="img/alimento-para-mascotas.jpg" class="card-img-top" alt="...">  </a>
+                                    <div class="card-body">
+                                      <h5 class="card-title">Alimentos</h5>
+                                      <p class="card-text">Una alimentacion sana y saludable es lo que tu mascota necesita</p>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col">
+                                  <div class="card h-100">
+                                    <a class="div-btn-tienda1" href="#"> 
+                                    <img src="img/cama_gato_1.jpg" class="card-img-top" alt="..."></a>
+                                    <div class="card-body">
+                                      <h5 class="card-title">Camas y Estar</h5>
+                                      <p class="card-text">Por que ellos son los reyes de la casa tenemos las mejores camas y muebles para su comodidad en casa.</p>
+                                    </div>
+                                  </div>
+                                </div>
+                        
+                                <div class="col">
+                                  <div class="card h-100">
+                                    <a class="div-btn-tienda1" href="#"> 
+                                    <img src="img/Juguetes_1.jpg" class="card-img-top" alt="..."></a>
+                                    <div class="card-body">
+                                      <h5 class="card-title">Entretencion</h5>
+                                      <p class="card-text">Ellos necesitan ser felices y tenemos todo lo que ncesitan para jugar.</p>
+                                    </div>
+                                  </div>
+                                </div>
+                        
+                                <div class="col">
+                                    <div class="card h-100">
+                                      <a class="div-btn-tienda1" href="#"> 
+                                      <img src="img/salud_1.jpg" class="card-img-top" alt="..."> </a>
+                                      <div class="card-body">
+                                        <h5 class="card-title">Salud y Bienestar</h5>
+                                        <p class="card-text">Vacunas, remedio y una asitencia medica de calidad para tus mascotas.</p>
+                                      </div>
+                                    </div>
+                                  </div>
+                        
+                                  <div class="col">
+                                    <div class="card h-100">
+                                      <a class="div-btn-tienda1" href="#"> 
+                                      <img src="img/Transporte_1.jpg" class="card-img-top" alt="..."> </a>
+                                      <div class="card-body">
+                                        <h5 class="card-title">Transporte y seguridad</h5>
+                                        <p class="card-text">Transporta tus mascotas de forma segura, comoda y sin peligro.</p>
+                                      </div>
+                                    </div>
+                                  </div>
+                        
+                                  <div class="col">
+                                    <div class="card h-100">
+                                      <a class="div-btn-tienda1" href="#"> 
+                                      <img src="img/vestuario_1.jpg" class="card-img-top" alt="..."> </a>
+                                      <div class="card-body">
+                                        <h5 class="card-title">Vestuario y Accesorios</h5>
+                                        <p class="card-text">Los mejores estilos y vestimenta los puedes encontrar aqui.</p>
+                                      </div>
+                                    </div>
+                                  </div>
+                        
+                                  <div class="col">
+                                    <div class="card h-100">
+                                      <a class="div-btn-tienda1" href="#"> 
+                                      <img src="img/Peluqueria_2.jpg" class="card-img-top" alt="..."> </a>
+                                      <div class="card-body">
+                                        <h5 class="card-title">Estilo y Peluqueria</h5>
+                                        <p class="card-text">Peluqueria y manicura para tus mascotas agendando una hora o habla con nuestro ejecutivos.</p>
+                                      </div>
+                                    </div>
+                                  </div>
+                    
+                                  <div class="col">
+                                    <div class="card h-100">
+                                      <a id="div-btn-donaciones1" href="#">
+                                      <img src="img/adopta_2.jpg" class="card-img-top" alt="..."> </a>
+                                      <div class="card-body">
+                                        <h5 class="card-title">Adopta</h5>
+                                        <p class="card-text">Ellos tambien quieren ser felices y tener una familia unete a nuestro grupo de adopcion.</p>
+                                      </div>
+                                    </div>
+                                  </div>
+                        
+                              </div>
+                        
+                        </div>
+
+                        {% endblock %}
+
+
+
+      
