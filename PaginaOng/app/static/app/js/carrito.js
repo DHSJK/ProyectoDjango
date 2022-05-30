@@ -1,22 +1,22 @@
-    // Variables
+        // Variables
     const baseDeDatos = [
         {
             id: 1,
             nombre: 'DAILY STUFF CAMA PELUCHE',
             precio: 22900,
-            imagen: 'img/cama_perro_1.jpg'
+            imagen: '../app/img/cama_perro_1.jpg'
         },
         {
             id: 2,
             nombre: 'CAT LOVE RATON MECANICO AZUL',
             precio: 6600,
-            imagen: 'img/juguete_gato_1.jpg'
+            imagen: 'app/img/juguete_gato_1.jpg'
         },
         {
             id: 3,
             nombre: 'ZEECAT ELLA COLLAR',
             precio: 4900,
-            imagen: 'img/collar_gato_1.jpg'
+            imagen: 'app/img/collar_gato_1.jpg'
         },
         {
             id: 4,

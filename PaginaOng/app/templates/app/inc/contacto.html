@@ -1,6 +1,10 @@
-<script src="js/code.js"></script>
+{% extends 'app/base.html' %}
 
-<div id="central-content">
+{% load static %}
+
+{% block contenido %}
+
+<script src="{% static 'app/js/code.js' %}"></script>
 <br>
 <br>
 <br>
@@ -70,4 +74,4 @@
                   </div>
                   <br>
             </div>
-</div>
+            {% endblock %}

@@ -1,8 +1,12 @@
 from django.urls import path
-from .views import home, index
+from .views import index, tienda, nosotros, donaciones, contacto, carrito
 
 urlpatterns = [
-    path('', home, name="home"),
-    path('index/', index, name="index"),
-    ##path('galeria/', galeria, name="galeria")
+    path('', index, name="index"),
+    path('tienda/', tienda, name="tienda"),
+    path('nosotros/', nosotros, name="nosotros"),
+    path('donaciones/', donaciones, name="donaciones"),
+    path('contacto/', contacto, name="contacto"),
+    path('carrito/', carrito, name="carrito")
+    
 ]

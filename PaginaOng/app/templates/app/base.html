@@ -48,25 +48,25 @@
       $(document).ready(function() {
         $('#div-btn1').on('click', function() {
             $('.navbar-nav li').removeClass('active');
-            $("#MascotaLover").load('inc/tienda.html');
+            $("#MascotaLover").load("{% url 'tienda' %}");
             return false;
         });
 
         $('#div-btn2').on('click', function() {
             $('.navbar-nav li').removeClass('active');
-            $("#MascotaLover").load('inc/nosotros.html');
+            $("#MascotaLover").load("{% url 'nosotros' %}");
             return false;
         });
 
         $('#div-btn3').on('click', function() {
             $('.navbar-nav li').removeClass('active');
-            $("#MascotaLover").load('inc/donaciones.html');
+            $("#MascotaLover").load("{% url 'donaciones' %}");
             return false;
         });
 
         $('#div-btn4').on('click', function() {
             $('.navbar-nav li').removeClass('active');
-            $("#MascotaLover").load('inc/contacto.html');
+            $("#MascotaLover").load("{% url 'contacto' %}");
             return false;
         });
     });
@@ -145,14 +145,14 @@
             <div class="logo">
                 <img src="{% static 'app/img/logo.png' %}" alt="logo" width="40" height="40" class="d-inline-block align-text-top">
             </div>
-            <a class="navbar-brand" href="index.html">MascotasLover</a>
+            <a class="navbar-brand" href="{% url 'index' %}">MascotasLover</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">                       
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                               <li class="nav-item active">
-                                  <a class="nav-link" href="index.html">Inicio</a>
+                                  <a class="nav-link" href="{% url 'index' %}">Inicio</a>
                               </li>
                               <li class="nav-item">
                                   <a class="nav-link" id="div-btn1" href="#">Tienda</a>
