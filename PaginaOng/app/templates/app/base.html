@@ -43,36 +43,7 @@
    
     
 
-    <script type="text/javascript">
-      
-      $(document).ready(function() {
-        $('#div-btn1').on('click', function() {
-            $('.navbar-nav li').removeClass('active');
-            $("#MascotaLover").load("{% url 'tienda' %}");
-            return false;
-        });
-
-        $('#div-btn2').on('click', function() {
-            $('.navbar-nav li').removeClass('active');
-            $("#MascotaLover").load("{% url 'nosotros' %}");
-            return false;
-        });
-
-        $('#div-btn3').on('click', function() {
-            $('.navbar-nav li').removeClass('active');
-            $("#MascotaLover").load("{% url 'donaciones' %}");
-            return false;
-        });
-
-        $('#div-btn4').on('click', function() {
-            $('.navbar-nav li').removeClass('active');
-            $("#MascotaLover").load("{% url 'contacto' %}");
-            return false;
-        });
-    });
-    </script> 
-
-
+  
 
 <!--jquery redireccion de carrusel-->
 <script>
@@ -155,16 +126,16 @@
                                   <a class="nav-link" href="{% url 'index' %}">Inicio</a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link" id="div-btn1" href="#">Tienda</a>
+                                  <a class="nav-link" id="#" href="{% url 'tienda' %}">Tienda</a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link" id="div-btn2" href="#">Nosotros</a>
+                                  <a class="nav-link" id="#" href="{% url 'nosotros' %}">Nosotros</a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link" id="div-btn3" href="#">Donaciones</a>
+                                  <a class="nav-link" id="#" href="{% url 'donaciones' %}">Donaciones</a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link" id="div-btn4" href="#">Contacto</a>
+                                  <a class="nav-link" id="#" href="{% url 'contacto' %}">Contacto</a>
                               </li>
                           </ul>
                       </div>
@@ -192,11 +163,7 @@
               </div>
 
 
-              <footer class="footer">
-                <div class="footer-container">
-                  <p>MascotasLover © 2022. Todos los derechos reservados.</p>
-                </div>
-              </footer>
+
           </div>
           
           
@@ -219,6 +186,12 @@
 
           
       </div>
+
+      <footer class="footer">
+        <div class="footer-container">
+          <p>MascotasLover © 2022. Todos los derechos reservados.</p>
+        </div>
+      </footer>
 
    
     </body>

@@ -125,15 +125,16 @@
   }
 
   .footer {
-    background-color: rgb(24, 90, 151);
-    padding: 4rem 0;
+    background-color: rgb(3, 21, 37);
+    padding: 2rem 0;
     text-align: center;
     margin-top: -1rem;
+    color:aliceblue;
   }
 
   .footer-container {
-    width: 85%;
-    max-width: 850px;
+    width: 70%;
+    max-width: 700px;
     margin: 0 auto;
     text-align: center;
     color:aliceblue;

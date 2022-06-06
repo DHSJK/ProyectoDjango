@@ -4,7 +4,7 @@
             id: 1,
             nombre: 'DAILY STUFF CAMA PELUCHE',
             precio: 22900,
-            imagen: '../app/img/cama_perro_1.jpg'
+            imagen: 'app/img/cama_perro_1.jpg'
         },
         {
             id: 2,

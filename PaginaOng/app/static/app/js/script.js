@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 let imagenes = [
-    {img: 'app/../img/donacion_2.jpg'},
-    {img: '../img/donacion_3.jpg'},
+    {img: './img/donacion_2.jpg'},
+    {img: './img/donacion_3.jpg'},
     {img: './img/donacion_1.jpg'},
     {img: './img/donacion_4.jpg'},
     {img: './img/donacion_5.jpg'},

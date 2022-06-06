@@ -62,6 +62,10 @@ var setcomunas = (region)=>{
           event.preventDefault();
           event.stopPropagation();
         }
+        else {
+          $("#submit-btn .text").text("Enviado");
+          $("#submit-btn").addClass("active");
+        }
         form.classList.add('was-validated');
       }, false);
     });
