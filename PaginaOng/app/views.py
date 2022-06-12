@@ -1,4 +1,6 @@
 from django.shortcuts import render
+import requests,json
+from .models import Mascota
 
 # Create your views here.
 
@@ -19,5 +21,16 @@ def contacto(request):
 
 def carrito(request):
     return render(request, 'app/inc/carrito.html')
+
+def home(request):
+    # mascotas = Mascota.objects.all
+    mascotas = requests.get('http://127.0.0.1:8000/api/lista-mascotas')
+    
+    datos = mascotas.json()
+    data = {
+        'mascotas': datos
+    } 
+    
+    return render(request, 'home/tabla.html', data)
 
 
