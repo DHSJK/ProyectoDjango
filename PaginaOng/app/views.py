@@ -3,6 +3,7 @@ import requests,json
 from app.forms import OrganizacionForm
 from .models import Mascota, Organizacion
 
+
 # Create your views here.
 
 def index(request):
@@ -71,6 +72,9 @@ def ong(request):
     
     return render(request, 'app/organizacion.html', data)
 
+
+
+
 def form_organizacion(request):
 
     organizacion = requests.get('http://127.0.0.1:8000/api/lista-organizacion')
@@ -82,8 +86,15 @@ def form_organizacion(request):
     if request.method == 'POST':
         formulario = OrganizacionForm(request.POST)
         
+        print(request.POST)
+        print(request.POST['nombreOng'])
         if formulario.is_valid:
-            formulario.save()
+            Org = Organizacion()
+            Org.nombreOng = request.POST['nombreOng']
+            Org.fechaOng = request.POST['fechaOng']
+            Org.descripcionOng = request.POST['descripcionOng']
+            Org.fotoOng = request.POST['fotoOng']
+            Org.save()
             datos['mensaje'] = 'Guardado Correctamente'
             
     return render(request, 'app/form_organizacion.html', datos)
@@ -114,3 +125,6 @@ def form_del_organizacion(request, id):
     organizacion.delete()
     
     return redirect(to=ong)
+
+
+

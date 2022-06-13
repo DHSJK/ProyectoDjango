@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 from app.views import organizacion, ong, form_organizacion, form_mod_organizacion, form_del_organizacion
 
 
+
 urlpatterns = [
     path('', include('app.urls')),
     path('admin/', admin.site.urls),
@@ -31,7 +32,7 @@ urlpatterns = [
     path('form-organizacion/', form_organizacion, name='form_organizacion'),
     path('form-mod-organizacion/<id>', form_mod_organizacion, name='form_mod_organizacion'),
     path('form-del-organizacion/<id>', form_del_organizacion, name='form_del_organizacion'),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 if settings.DEBUG:
