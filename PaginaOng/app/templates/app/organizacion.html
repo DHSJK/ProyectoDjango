@@ -30,7 +30,7 @@
                             <td>{{ o.nombreOng }}</td>
                             <td>{{ o.fechaOng }}</td>
                             <td>{{ o.descripcionOng }}</td>                         
-                            <td><img src="{{ o.fotoOng }}"  ></td>
+                            <td><img src="{{ o.fotoOng.url }}"  ></td>
                             <td><a href="{% url 'form_mod_organizacion' o.idOng %}">Modificar</a></td>
                             <td><a href="{% url 'form_del_organizacion' o.idOng %}">Eliminar</a></td>
                             
