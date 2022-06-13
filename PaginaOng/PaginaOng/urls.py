@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from app.views import organizacion, form_organizacion, form_mod_organizacion, form_del_organizacion
+from app.views import organizacion, ong, form_organizacion, form_mod_organizacion, form_del_organizacion
 
 
 urlpatterns = [
@@ -27,6 +27,7 @@ urlpatterns = [
     path('api/', include('rest_productos.urls')),
     path('api/', include('rest_organizacion.urls')),
     path('organizacion/', organizacion, name="organizacion"),
+    path('ong/', ong, name='ong'),
     path('form-organizacion/', form_organizacion, name='form_organizacion'),
     path('form-mod-organizacion/<id>', form_mod_organizacion, name='form_mod_organizacion'),
     path('form-del-organizacion/<id>', form_del_organizacion, name='form_del_organizacion'),

@@ -60,6 +60,16 @@ def organizacion(request):
     
     return render(request, 'app/organizacion.html', data)
 
+def ong(request):
+ 
+    organizacion = requests.get('http://127.0.0.1:8000/api/lista-organizacion')
+    
+    datos = organizacion.json()
+    data = {
+        'organizacion': datos
+    } 
+    
+    return render(request, 'app/organizacion.html', data)
 
 def form_organizacion(request):
 
@@ -103,4 +113,4 @@ def form_del_organizacion(request, id):
     
     organizacion.delete()
     
-    return redirect(to=home)
+    return redirect(to=ong)
