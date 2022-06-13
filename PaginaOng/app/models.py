@@ -35,7 +35,59 @@ class Mascota(models.Model):
     sexoMascota = models.ForeignKey(Sexo, on_delete=models.CASCADE)
     estEstirizadoMascota = models.BooleanField(verbose_name='Estado Estirilización de Mascota')
     razaMascota = models.ForeignKey(Raza, on_delete=models.CASCADE)
-    fotoMascota = models.ImageField(upload_to='static/img/')
+    fotoMascota = models.ImageField(upload_to="productos", null=True)
     
     def __str__(self):
         return self.nombreMascota
+
+
+
+
+
+#**************************BASE DE DATOS PRODUCTOS*********************
+
+
+class TipoMascotaPRO(models.Model):
+    idTipoProducto = models.AutoField(primary_key=True, verbose_name='Id de Mascota')
+    descTipoMascota = models.CharField(max_length=30, verbose_name='Descripción de Mascota')
+    
+    def __str__(self):
+        return self.descTipoMascota
+
+class Categoria(models.Model):
+    idCategoria = models.AutoField(primary_key=True, verbose_name='Id de Categoria')
+    descCategoria = models.CharField(max_length=50)
+    tipoMascota = models.ForeignKey(TipoMascotaPRO, default=1, on_delete=models.CASCADE)
+       
+    def __str__(self):
+        return self.descCategoria
+
+class Marca(models.Model):
+    idMarca = models.AutoField(primary_key=True, verbose_name='Id de marca')
+    nombreMarca = models.CharField(max_length=200)
+    
+       
+    def __str__(self):
+        return self.nombreMarca
+
+
+class Producto(models.Model):
+    idProducto = models.AutoField (primary_key=True, verbose_name='Id del Producto')
+    nombreProducto = models.CharField(max_length=40, verbose_name='Nombre del Producto')
+    precioProducto = models.IntegerField(verbose_name='Precio del Producto')
+    descripcion = models.TextField(verbose_name='Descripcion del Producto')
+    marca = models.ForeignKey(Marca, on_delete=models.PROTECT)
+    stock = models.IntegerField(verbose_name='Cantidad Stock')
+    categoria = models.ForeignKey(Categoria, on_delete=models.PROTECT)
+    fotoMascota = models.ImageField(upload_to="productos", null=True)
+
+    def __str__(self):
+        return self.nombreProducto
+
+
+    
+
+
+
+ 
+

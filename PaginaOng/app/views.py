@@ -22,7 +22,7 @@ def contacto(request):
 def carrito(request):
     return render(request, 'app/inc/carrito.html')
 
-def home(request):
+def tabla(request):
     # mascotas = Mascota.objects.all
     mascotas = requests.get('http://127.0.0.1:8000/api/lista-mascotas')
     
@@ -31,6 +31,6 @@ def home(request):
         'mascotas': datos
     } 
     
-    return render(request, 'home/tabla.html', data)
+    return render(request, 'app/tabla.html', data)
 
 

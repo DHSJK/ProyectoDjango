@@ -541,6 +541,42 @@ window.addEventListener('mouseout', function(evt) {
 
 
 
+<div class="container">
+  <div class="row">
+      <h1>Listado de Mascotas</h1>
+  </div>
+  <div class="row">
+      <table class="table table-striped">
+          <thead>
+              <tr>
+                  <td>Nombre Mascota</td>
+                  <td>Edad</td>
+                  <td>Sexo</td>
+                  <td>Estado Estirilización</td>
+                  <td>Raza</td>
+                  <td>Foto</td>
+              </tr>
+          </thead>
+          {% for m in mascotas %}
+          <tbody>
+              <tr>
+                  <td>{{ m.nombreMascota }}</td>
+                  <td>{{ m.edadAnioMascota }} Años y {{ m.edadMesesMascota }} Meses</td>
+                  <td>{{ m.sexo_mascota }}</td>
+                  <td>{{ m.estEstirizadoMascota }}</td>
+                  <td>{{ m.raza_mascota }}</td>
+                  <td><img src="{{ m.fotoMascota }}"  ></td>
+              </tr>
+          </tbody>
+          {% endfor %}
+      </table>  
+  </div>
+</div>
+
+
+
+
+
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="js/code.js"> </script>

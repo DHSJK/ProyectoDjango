@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',
     'rest_framework',
-    'rest_mascotas'
+    'rest_mascotas',
+    'rest_productos'
 ]
 
 MIDDLEWARE = [
@@ -121,9 +122,17 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 
+import os
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+
 STATICFILES_DIRS = [
     BASE_DIR / "app/static",
 ]
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
