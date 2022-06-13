@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import requests,json
-from .models import Mascota
+from app.forms import OrganizacionForm
+from .models import Mascota, Organizacion
 
 # Create your views here.
 
@@ -82,7 +83,7 @@ def form_organizacion(request):
 
 def form_mod_organizacion(request, id):
 
-    organizacion = Organizacion.objects.get(nombreOng = id)
+    organizacion = Organizacion.objects.get(idOng = id)
     
     datos = {
         'form': OrganizacionForm(instance = organizacion)
@@ -98,7 +99,7 @@ def form_mod_organizacion(request, id):
     return render(request, 'app/form_organizacion.html', datos)
 
 def form_del_organizacion(request, id):
-    organizacion = Organizacion.objects.get(nombreOng = id)
+    organizacion = Organizacion.objects.get(idOng = id)
     
     organizacion.delete()
     

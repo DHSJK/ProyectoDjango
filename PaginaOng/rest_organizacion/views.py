@@ -27,18 +27,15 @@ def lista_organizacion(request):
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
-
-
 @api_view(['GET', 'PUT', 'DELETE'])
 def detalle_organizacion(request, id):
     """
-    GET = Muestra 1 vehículo en particular
-    PUT = Actualiza 1 vehículo en particular
-    DELETE = Elimina 1 vehículo en particular
+    GET = Muestra 1 organización en particular
+    PUT = Actualiza 1 organización en particular
+    DELETE = Elimina 1 organización en particular
     """
     try:
-        Organizacion = Organizacion.objects.get(nombreOng=id)
+        organizacion = Organizacion.objects.get(idOng=id)
     except:
         return Response(status=status.HTTP_404_NOT_FOUND)
     if request.method == 'GET':

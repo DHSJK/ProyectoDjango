@@ -100,6 +100,6 @@ class Organizacion(models.Model):
 
     
     def __str__(self):
-        return self.nombreOng
+        return self.idOng
 
 
