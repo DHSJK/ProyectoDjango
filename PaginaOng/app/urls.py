@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import index, tienda, nosotros, donaciones, contacto, carrito, tabla, tablaproducto, organizacion
+from .views import index, tienda, nosotros, donaciones, contacto, carrito, tabla, tablaproducto, organizacion,form_organizacion, form_mod_organizacion, form_del_organizacion
 
 urlpatterns = [
     path('', index, name="index"),
@@ -11,6 +11,9 @@ urlpatterns = [
     path('tabla/', tabla, name="tabla"),
     path('tablaproducto/', tablaproducto, name="tablaproducto"),
     path('organizacion/', organizacion, name="organizacion"),
+    path('form-organizacion/', form_organizacion, name='form_organizacion'),
+    path('form-mod-organizacion/<id>', form_mod_organizacion, name='form_mod_organizacion'),
+    path('form-del-organizacion/<id>', form_del_organizacion, name='form_del_organizacion'),
     
 
     

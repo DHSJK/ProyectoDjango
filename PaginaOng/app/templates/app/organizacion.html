@@ -14,24 +14,32 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
+                            <td>ID ONG</td>
                             <td>Nombre Organizacion</td>
                             <td>Fecha </td>
                             <td>Descripcion</td>
                             <td>Foto</td>
+                            <td colspan="2">Opciones</td>
                         </tr>
                     </thead>
                     {% for o in organizacion %}
 
                     <tbody>
                         <tr>
+                            <td>{{ o.idOng }}</td>
                             <td>{{ o.nombreOng }}</td>
                             <td>{{ o.fechaOng }}</td>
                             <td>{{ o.descripcionOng }}</td>                         
                             <td><img src="{{ o.fotoOng }}"  ></td>
+                            <td><a href="{% url 'form_mod_organizacion' o.nombreOng %}">Modificar</a></td>
+                            <td><a href="{% url 'form_del_organizacion' o.nombreOng %}">Eliminar</a></td>
+                            
                         </tr>
                     </tbody>
                     {% endfor %}
                 </table>  
+                <a href="{% url 'form_organizacion' %}">Nuevo Vehículo</a>  
+                
             </div>
         </div>
     </body>

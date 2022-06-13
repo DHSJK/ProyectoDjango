@@ -58,3 +58,48 @@ def organizacion(request):
     } 
     
     return render(request, 'app/organizacion.html', data)
+
+
+def form_organizacion(request):
+
+    organizacion = requests.get('http://127.0.0.1:8000/api/lista-organizacion')
+
+    datos = {
+        'form': OrganizacionForm
+    }
+    
+    if request.method == 'POST':
+        formulario = OrganizacionForm(request.POST)
+        
+        if formulario.is_valid:
+            formulario.save()
+            datos['mensaje'] = 'Guardado Correctamente'
+            
+    return render(request, 'app/form_organizacion.html', datos)
+
+
+
+
+def form_mod_organizacion(request, id):
+
+    organizacion = Organizacion.objects.get(nombreOng = id)
+    
+    datos = {
+        'form': OrganizacionForm(instance = organizacion)
+    }
+    
+    if request.method == 'POST':
+        formulario = OrganizacionForm(data=request.POST, instance = organizacion)
+        
+        if formulario.is_valid:
+            formulario.save()
+            datos['mensaje'] = 'Modificado Correctamente'
+            
+    return render(request, 'app/form_organizacion.html', datos)
+
+def form_del_organizacion(request, id):
+    organizacion = Organizacion.objects.get(nombreOng = id)
+    
+    organizacion.delete()
+    
+    return redirect(to=home)

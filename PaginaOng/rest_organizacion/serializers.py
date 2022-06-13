@@ -7,4 +7,4 @@ class OrganizacionSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Organizacion
-        fields = ['nombreOng', 'fechaOng', 'descripcionOng', 'fotoOng']
+        fields = ['idOng','nombreOng', 'fechaOng', 'descripcionOng', 'fotoOng']
