@@ -34,3 +34,27 @@ def tabla(request):
     return render(request, 'app/tabla.html', data)
 
 
+def tablaproducto(request):
+ 
+    productos = requests.get('http://127.0.0.1:8000/api/lista-productos')
+    
+    datos = productos.json()
+    data = {
+        'productos': datos
+    } 
+    
+    return render(request, 'app/tablaproducto.html', data)
+
+
+
+
+def organizacion(request):
+ 
+    organizacion = requests.get('http://127.0.0.1:8000/api/lista-organizacion')
+    
+    datos = organizacion.json()
+    data = {
+        'organizacion': datos
+    } 
+    
+    return render(request, 'app/organizacion.html', data)

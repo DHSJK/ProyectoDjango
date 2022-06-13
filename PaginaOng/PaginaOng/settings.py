@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'app',
     'rest_framework',
     'rest_mascotas',
-    'rest_productos'
+    'rest_productos',
+    'rest_organizacion'
+
 ]
 
 MIDDLEWARE = [

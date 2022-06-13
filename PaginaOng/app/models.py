@@ -75,19 +75,31 @@ class Producto(models.Model):
     idProducto = models.AutoField (primary_key=True, verbose_name='Id del Producto')
     nombreProducto = models.CharField(max_length=40, verbose_name='Nombre del Producto')
     precioProducto = models.IntegerField(verbose_name='Precio del Producto')
-    descripcion = models.TextField(verbose_name='Descripcion del Producto')
-    marca = models.ForeignKey(Marca, on_delete=models.PROTECT)
-    stock = models.IntegerField(verbose_name='Cantidad Stock')
-    categoria = models.ForeignKey(Categoria, on_delete=models.PROTECT)
-    fotoMascota = models.ImageField(upload_to="productos", null=True)
+    descripcionProducto = models.TextField(verbose_name='Descripcion del Producto')
+    marcaProducto = models.ForeignKey(Marca, on_delete=models.PROTECT)
+    stockProducto = models.IntegerField(verbose_name='Cantidad Stock')
+    categoriaProducto = models.ForeignKey(Categoria, on_delete=models.PROTECT)
+    fotoProducto = models.ImageField(upload_to="productos", null=True)
 
     def __str__(self):
         return self.nombreProducto
 
+#**************************FIN BASE DE DATOS PRODUCTOS*********************
 
+
+#****************************BASE DE DATOS DONACIONES***********************
     
 
 
+class Organizacion(models.Model):
+    idOng = models.AutoField (primary_key=True, verbose_name='Id de la Ong')
+    nombreOng = models.CharField(max_length=40, verbose_name='Nombre de la Ong')
+    fechaOng = models.DateField(verbose_name='Fecha  de la Organizacion')
+    descripcionOng = models.TextField(verbose_name='Descripcion de la Ong')
+    fotoOng = models.ImageField(upload_to="Organizacion", null=True)
 
- 
+    
+    def __str__(self):
+        return self.nombreOng
+
 

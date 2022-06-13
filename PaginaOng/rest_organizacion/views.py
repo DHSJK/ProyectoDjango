@@ -4,23 +4,23 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.parsers import JSONParser
 from django.views.decorators.csrf import csrf_exempt
-from app.models import Producto
-from .serializers import ProductoSerializer
+from app.models import Organizacion
+from .serializers import OrganizacionSerializer
 
 @csrf_exempt
 @api_view(['GET', 'POST'])
-def lista_productos(request):
+def lista_organizacion(request):
     """
-    GET = Lista todas los productos
+    GET = Lista todas las Organizaciones
     POST = Agrega Registro
     """
     if request.method == 'GET':
-        producto = Producto.objects.all()
-        serializer = ProductoSerializer(producto, many=True)
+        organizacion = Organizacion.objects.all()
+        serializer = OrganizacionSerializer(organizacion, many=True)
         return Response(serializer.data)
     elif request.method == 'POST':
         data = JSONParser().parse(request)
-        serializer = ProductoSerializer(data=data)
+        serializer = OrganizacionSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -30,4 +30,3 @@ def lista_productos(request):
 
 
 # Create your views here.
-
