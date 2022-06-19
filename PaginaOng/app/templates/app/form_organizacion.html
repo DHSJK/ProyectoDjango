@@ -10,7 +10,7 @@
                 <h1>Ingreso de nuevas ONG</h1>
             </div>
             <div class="row">
-                <form method="post" action="" id="formulario">
+                <form method="post" action="" id="formulario" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="form-group">
                         {{ form.as_table }}

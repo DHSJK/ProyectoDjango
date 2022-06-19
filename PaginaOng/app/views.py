@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 import requests,json
 from app.forms import OrganizacionForm
 from .models import Mascota, Organizacion
+from django.contrib import messages
+
 
 
 # Create your views here.
@@ -89,12 +91,15 @@ def form_organizacion(request):
         print(request.POST)
         print(request.POST['nombreOng'])
         if formulario.is_valid:
+            
             Org = Organizacion()
             Org.nombreOng = request.POST['nombreOng']
             Org.fechaOng = request.POST['fechaOng']
             Org.descripcionOng = request.POST['descripcionOng']
-            Org.fotoOng = request.POST['fotoOng']
-            Org.save()
+            if len(request.FILES) != 0:
+                Org.fotoOng = request.FILES['fotoOng']
+                Org.save()
+
             datos['mensaje'] = 'Guardado Correctamente'
             
     return render(request, 'app/form_organizacion.html', datos)

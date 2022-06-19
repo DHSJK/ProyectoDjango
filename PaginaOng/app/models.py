@@ -87,7 +87,7 @@ class Producto(models.Model):
 #**************************FIN BASE DE DATOS PRODUCTOS*********************
 
 
-#****************************BASE DE DATOS DONACIONES***********************
+#****************************BASE DE DATOS ORGANIZACION***********************
     
 
 
@@ -96,7 +96,7 @@ class Organizacion(models.Model):
     nombreOng = models.CharField(max_length=40, verbose_name='Nombre de la Ong')
     fechaOng = models.DateField(verbose_name='Fecha  de la Organizacion')
     descripcionOng = models.TextField(verbose_name='Descripcion de la Ong')
-    fotoOng = models.ImageField(upload_to="Organizacion", null=True)
+    fotoOng = models.ImageField(upload_to="Organizacion", null=True, blank=True)
 
     
     def __str__(self):

@@ -1,5 +1,7 @@
 from django.urls import path
 from .views import index, ong, tienda, nosotros, donaciones, contacto, carrito, tabla, tablaproducto, organizacion,form_organizacion, form_mod_organizacion, form_del_organizacion
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', index, name="index"),
@@ -17,5 +19,6 @@ urlpatterns = [
     path('form-del-organizacion/<id>', form_del_organizacion, name='form_del_organizacion'),
     
 
-    
 ]
+
+urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
