@@ -99,8 +99,8 @@ def form_organizacion(request):
             if len(request.FILES) != 0:
                 Org.fotoOng = request.FILES['fotoOng']
                 Org.save()
-
             datos['mensaje'] = 'Guardado Correctamente'
+
             
     return render(request, 'app/form_organizacion.html', datos)
 
@@ -116,11 +116,12 @@ def form_mod_organizacion(request, id):
     }
     
     if request.method == 'POST':
-        formulario = OrganizacionForm(data=request.POST, instance = organizacion)
+        formulario = OrganizacionForm(data=request.POST, instance = organizacion, files=request.FILES)
         
         if formulario.is_valid:
             formulario.save()
             datos['mensaje'] = 'Modificado Correctamente'
+        datos['form'] = OrganizacionForm (instance=Organizacion.objects.get(idOng=id))
             
     return render(request, 'app/form_organizacion.html', datos)
 
