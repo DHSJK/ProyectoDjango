@@ -26,6 +26,13 @@ def contacto(request):
 def carrito(request):
     return render(request, 'app/inc/carrito.html')
 
+
+def registro(request):
+    return render(request, 'app/inc/registro.html')
+
+def login(request):
+    return render(request, 'app/inc/login.html')
+
 def tabla(request):
     # mascotas = Mascota.objects.all
     mascotas = requests.get('http://127.0.0.1:8000/api/lista-mascotas')

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import index, ong, tienda, nosotros, donaciones, contacto, carrito, tabla, tablaproducto, organizacion,form_organizacion, form_mod_organizacion, form_del_organizacion
+from .views import index, ong, tienda, nosotros, donaciones, contacto, carrito, tabla, tablaproducto, organizacion,form_organizacion, form_mod_organizacion, form_del_organizacion, registro, login
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -17,6 +17,8 @@ urlpatterns = [
     path('ong/', ong, name='ong'),
     path('form-mod-organizacion/<id>', form_mod_organizacion, name='form_mod_organizacion'),
     path('form-del-organizacion/<id>', form_del_organizacion, name='form_del_organizacion'),
+    path('registro/', registro, name="registro"),
+    path('login/', login, name="login"),
     
 
 ]
