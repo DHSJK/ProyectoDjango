@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 import requests,json
-from app.forms import OrganizacionForm
+from app.forms import OrganizacionForm, CustomUserCreationForm
 from .models import Mascota, Organizacion
 from django.contrib import messages
-
+from django.contrib.auth import authenticate
+from django.contrib.auth import login as auth_login
 
 
 # Create your views here.
@@ -139,5 +140,20 @@ def form_del_organizacion(request, id):
     
     return redirect(to=ong)
 
+def registro(request):
+    data = {
+        'form': CustomUserCreationForm()
+    }
+    if request.method == 'POST':
+        formulario = CustomUserCreationForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            user = authenticate(username=formulario.cleaned_data["username"], password=formulario.cleaned_data["password1"])
+            auth_login(request, user)
+            messages.success(request, "Te has registrado correctamente")
+            #redirigir al home
+            return redirect(to="/")
+        data['form'] = formulario
 
+    return render(request, 'registration/registro.html', data)
 

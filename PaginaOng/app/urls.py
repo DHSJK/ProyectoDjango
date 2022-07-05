@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import index, ong, tienda, nosotros, donaciones, contacto, carrito, tabla, tablaproducto, organizacion,form_organizacion, form_mod_organizacion, form_del_organizacion, registro, login
+from .views import index, ong, tienda, nosotros, donaciones, contacto, carrito, tabla, tablaproducto,\
+     organizacion,form_organizacion, form_mod_organizacion, form_del_organizacion, registro, login
 from django.conf import settings
 from django.conf.urls.static import static
 
