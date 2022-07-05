@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+from telnetlib import LOGOUT
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 # Application definition
 
@@ -41,7 +44,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_mascotas',
     'rest_productos',
-    'rest_organizacion'
+    'rest_organizacion',
+    'crispy_forms'
 
 ]
 
@@ -79,26 +83,26 @@ WSGI_APPLICATION = 'PaginaOng.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-#}
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.oracle',
-        'NAME': '127.0.0.1:1521/xe',
-        'USER': 'C##ONG',
-        'PASSWORD': 'ONG',
-        'TEST': {
-            'USER': 'default_test',
-            'TBLSPACE': 'default_test_tbls',
-            'TBLSPACE_TMP': 'default_test_tbls_tmp',
-        },
-    },
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.oracle',
+#        'NAME': '127.0.0.1:1521/xe',
+#        'USER': 'C##ONG',
+#        'PASSWORD': 'ONG',
+#        'TEST': {
+#            'USER': 'default_test',
+#            'TBLSPACE': 'default_test_tbls',
+#            'TBLSPACE_TMP': 'default_test_tbls_tmp',
+#        },
+#    },
+#}
 
 
 

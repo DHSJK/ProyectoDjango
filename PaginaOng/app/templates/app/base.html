@@ -155,10 +155,18 @@
 
 
                      <div class="botonregistro">                         
-                          <a id="#" href="{% url 'registro' %}"> 
-                          <button type="button" class="btn btn-primary" data-backdrop="false">Registro</button></a>
-                          <a id="#" href="{% url 'login' %}"> 
-                          <button id="boton-comprar" type="button" class="btn btn-success">Iniciar Sesión</button></a>
+
+                          {% if user.is_authenticated %}
+                            <button id="boton-comprar" type="button" class="btn btn-light"><a href="#">@{{ user.username }}</a></button>
+                            
+                            <a id="#" href="{% url 'logout' %}"> 
+                            <button id="boton-comprar" type="button" class="btn btn-danger">Cerrar Sesión</button></a>
+                          {% else %}
+                            <a id="#" href="{% url 'registro' %}"> 
+                            <button type="button" class="btn btn-primary" data-backdrop="false">Registro</button></a>
+                            <a id="#" href="{% url 'login' %}"> 
+                            <button id="boton-comprar" type="button" class="btn btn-success">Iniciar Sesión</button></a>
+                          {% endif %}
                       </div>
                   </nav>
 

@@ -32,6 +32,7 @@ urlpatterns = [
     path('form-organizacion/', form_organizacion, name='form_organizacion'),
     path('form-mod-organizacion/<id>', form_mod_organizacion, name='form_mod_organizacion'),
     path('form-del-organizacion/<id>', form_del_organizacion, name='form_del_organizacion'),
+    path('accounts/', include('django.contrib.auth.urls'))
 ]
 
 
