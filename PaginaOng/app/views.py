@@ -1,13 +1,19 @@
 from django.shortcuts import render, redirect
 import requests,json
-from app.forms import OrganizacionForm, CustomUserCreationForm
-from .models import Mascota, Organizacion
+from app.forms import OrganizacionForm, CustomUserCreationForm, DonacionForm
+from .models import Mascota, Organizacion, Donacion
 from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
+from rest_framework import viewsets
+from .serializers import DonacionSerializer
 
 
 # Create your views here.
+
+class DonacionViewset(viewsets.ModelViewSet):
+    queryset = Donacion.objects.all()
+    serializer_class = DonacionSerializer
 
 def index(request):
     return render(request, 'app/index.html')
@@ -139,6 +145,7 @@ def form_del_organizacion(request, id):
     organizacion.delete()
     
     return redirect(to=ong)
+
 
 def registro(request):
     data = {

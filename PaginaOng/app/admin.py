@@ -17,3 +17,6 @@ admin.site.register(Producto)
 # ONG
 admin.site.register(Organizacion)
 
+# DONACIONES
+admin.site.register(Donacion)
+

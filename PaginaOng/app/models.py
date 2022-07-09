@@ -100,6 +100,29 @@ class Organizacion(models.Model):
 
     
     def __str__(self):
-        return str(self.idOng)
+        return str(self.nombreOng)
+
+
+#****************************FIN BASE DE DATOS ORGANIZACION***********************
+
+#****************************BASE DE DATOS DONACIONES***********************
+opciones_donaciones = [
+    [0, 1000],
+    [1, 2000],
+    [2, 5000],
+    [3, 10000],
+    [4, 20000]
+
+]
+class Donacion(models.Model):
+    usuarioDonador = models.CharField(max_length=50)
+    nombreDonador = models.CharField(max_length=50)
+    ong = models.ForeignKey(Organizacion, null=True, blank=True, on_delete=models.CASCADE)
+    correoDonador = models.EmailField()
+    fechaDonacion = models.DateField()
+    monto = models.IntegerField(choices=opciones_donaciones)
+
+    def __str__(self):
+        return str(self.usuarioDonador)
 
 
