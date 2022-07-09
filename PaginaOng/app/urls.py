@@ -1,12 +1,13 @@
 from django.urls import path, include
-from .views import index, ong, tienda, nosotros, donaciones, contacto, carrito, tabla, tablaproducto,\
+from .views import index, ong, tienda, nosotros, donaciones, contacto, carrito, tabla, tablaproducto,ProductoViewset,\
      organizacion,form_organizacion, form_mod_organizacion, form_del_organizacion, registro, login, DonacionViewset
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework import routers
 
 router = routers.DefaultRouter()
-router.register('donacion', DonacionViewset)
+router.register('donacion', DonacionViewset),
+router.register('producto', ProductoViewset)
 
 urlpatterns = [
     path('', index, name="index"),

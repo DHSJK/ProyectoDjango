@@ -51,18 +51,17 @@ window.addEventListener('mouseout', function(evt) {
         <h5><a class="div-btn-modal1" href="#" class="enlace">Ir a Carrito</a></h5>
         <hr class="my-4">
     </div>
-    
 
 
     <div class="row row-cols-1 row-cols-md-3 g-4">
-        {% for p in productos %}
+
         <div class="col">
           <div class="card h-100">
-            <img src="{{ p.fotoProducto }}" class="card-img-top" alt="..." width="90" height="70">
+            <img src="{% static 'app/img/cama_perro_1.jpg' %}" class="card-img-top" alt="..." width="90" height="70">
             <div class="card-body">
-              <h5 class="card-title">{{ p.nombreProducto }}</h5>
-              <p class="card-text"><span>Stock : </span >{{ p.stockProducto }}</p>
-              <p class="card-text"><span>$</span >{{ p.precioProducto }}</p>
+              <h5 class="card-title">DAILY STUFF CAMA PELUCHE</h5>
+              <p class="card-text">Stock: disponible</p>
+              <p class="card-text"><span>$</span >22.990</p>
                                   <!-- Button trigger modal 1-->
                                   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal_1">
                                     Detalle
@@ -70,11 +69,131 @@ window.addEventListener('mouseout', function(evt) {
             </div>
           </div>
         </div>
-        {% endfor %}
 
+
+        <div class="col">
+          <div class="card h-100">
+            <img src="{% static 'app/img/juguete_gato_1.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">CAT LOVE RATON MECANICO AZUL</h5>
+              <p class="card-text">Stock: disponible</p>
+              <p class="card-text"><span>$</span >6.600</p>
+                                                  <!-- Button trigger modal 2-->
+                                                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal_2">
+                                                    Detalle
+                                                 </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100">
+            <img src="{% static 'app/img/collar_gato_1.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">ZEECAT ELLA COLLAR</h5>
+              <p class="card-text">Stock: disponible</p>
+              <p class="card-text"><span>$</span >4.900</p>
+                
+                                                  <!-- Button trigger modal 3-->
+                                                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal_3">
+                                                    Detalle
+                                                 </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100">
+            <img src="{% static 'app/img/transportadora_1.png' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">TRANSPORTADORA DAILY STUFF ROUTE 1</h5>
+              <p class="card-text">Stock: disponible</p>
+              <p class="card-text"><span>$</span >13.990</p> 
+                                                                  <!-- Button trigger modal 4-->
+                                                                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal_4">
+                                                                    Detalle
+                                                                 </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100">
+            <img src="{% static 'app/img/rascador_2.png' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">RASGUÑADOR CON TERRAZA LEOPARDO</h5>
+              <p class="card-text">Stock: disponible</p>
+              <p class="card-text"><span>$</span >13.840</p> 
+                <!-- Button trigger modal 5-->
+               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal_5">
+               Detalle
+               </button>
+            </div>
+          </div>
+        </div>
+
+          <div class="col">
+            <div class="card h-100">
+              <img src="{% static 'app/img/bebedor_1.jpg' %}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">ZEECAT DUO BOWL OLIVE</h5>
+                <p class="card-text">Stock: disponible</p>
+                <p class="card-text"><span>$</span >12.901</p>
+               <!-- Button trigger modal 6-->
+               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal_6">
+                Detalle
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="card h-100">
+              <img src="{% static 'app/img/hueso_1.png' %}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">PLANET DOG HUESO AZUL</h5>
+                <p class="card-text">Stock: disponible</p>
+                <p class="card-text"><span>$</span >9.990</p>
+                <!-- Button trigger modal 7-->
+               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal_7">
+                Detalle
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="card h-100">
+              <img src="{% static 'app/img/arena_gato_1.png' %}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">ARENA TOPCAT-R 4 KGL</h5>
+                <p class="card-text">Stock: disponible</p>
+                <p class="card-text"><span>$</span >8.000</p>
+               <!-- Button trigger modal 8-->
+               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal_8">
+                Detalle
+                </button>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col">
+            <div class="card h-100">
+              <img src="{% static 'app/img/remedio_gato_1.png' %}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">POWER GATO DE 4-8 KG</h5>
+                <p class="card-text">Stock: disponible</p>
+                <p class="card-text"><span>$</span >7.990</p>
+                <!-- Button trigger modal 8-->
+               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal_9">
+                Detalle
+                </button>
+              </div>
+            </div>
+          </div>
 
       </div>
-
 
 <br>
 <br>
@@ -92,7 +211,7 @@ window.addEventListener('mouseout', function(evt) {
           </li>
         </ul>
       </nav>
-    
+
 
 
      
@@ -105,7 +224,7 @@ window.addEventListener('mouseout', function(evt) {
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-
+' %}
         <div class="col">
           <div class="card h-100">
             <img src="{% static 'app/img/cama_perro_1.jpg' %}" class="card-img-top" alt="..." width="90" height="70">
@@ -422,6 +541,37 @@ window.addEventListener('mouseout', function(evt) {
 
 
 
+<div class="container">
+  <div class="row">
+      <h1>Listado de Mascotas</h1>
+  </div>
+  <div class="row">
+      <table class="table table-striped">
+          <thead>
+              <tr>
+                  <td>Nombre Mascota</td>
+                  <td>Edad</td>
+                  <td>Sexo</td>
+                  <td>Estado Estirilización</td>
+                  <td>Raza</td>
+                  <td>Foto</td>
+              </tr>
+          </thead>
+          {% for m in mascotas %}
+          <tbody>
+              <tr>
+                  <td>{{ m.nombreMascota }}</td>
+                  <td>{{ m.edadAnioMascota }} Años y {{ m.edadMesesMascota }} Meses</td>
+                  <td>{{ m.sexo_mascota }}</td>
+                  <td>{{ m.estEstirizadoMascota }}</td>
+                  <td>{{ m.raza_mascota }}</td>
+                  <td><img src="{{ m.fotoMascota }}"  ></td>
+              </tr>
+          </tbody>
+          {% endfor %}
+      </table>  
+  </div>
+</div>
 
 
 

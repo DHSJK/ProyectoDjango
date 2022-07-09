@@ -1,9 +1,10 @@
 from pyexpat import model
 from django import forms
 from django.forms import ModelForm
-from .models import Organizacion, Donacion
+from .models import Organizacion, Donacion, Producto
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+
 
 class OrganizacionForm(ModelForm):
     
@@ -21,4 +22,10 @@ class CustomUserCreationForm(UserCreationForm):
 class DonacionForm(ModelForm):
     class Meta:
         model = Donacion
+        fields = '__all__'
+
+
+class ProductoForm(forms.ModelForm):
+    class Meta:
+        model = Producto
         fields = '__all__'

@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect
 import requests,json
-from app.forms import OrganizacionForm, CustomUserCreationForm, DonacionForm
-from .models import Mascota, Organizacion, Donacion
+from app.forms import OrganizacionForm, CustomUserCreationForm, DonacionForm, ProductoForm
+from .models import Mascota, Organizacion, Donacion, Producto
 from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from rest_framework import viewsets
-from .serializers import DonacionSerializer
+from .serializers import DonacionSerializer, ProductoSerializer
 
 
 # Create your views here.
@@ -19,7 +19,15 @@ def index(request):
     return render(request, 'app/index.html')
 
 def tienda(request):
-    return render(request, 'app/inc/tienda.html')
+    productos = requests.get('http://127.0.0.1:8000/api/producto')
+        
+    datos = productos.json()
+    data = {
+        'productos': datos
+    } 
+    
+    return render(request, 'app/inc/tienda.html', data)
+
 
 def nosotros(request):
     return render(request, 'app/inc/nosotros.html')
@@ -52,6 +60,7 @@ def tabla(request):
     return render(request, 'app/tabla.html', data)
 
 
+
 def tablaproducto(request):
  
     productos = requests.get('http://127.0.0.1:8000/api/lista-productos')
@@ -62,6 +71,8 @@ def tablaproducto(request):
     } 
     
     return render(request, 'app/tablaproducto.html', data)
+
+
 
 
 
@@ -164,3 +175,19 @@ def registro(request):
 
     return render(request, 'registration/registro.html', data)
 
+
+
+class ProductoViewset(viewsets.ModelViewSet):
+    queryset = Producto.objects.all()
+    serializer_class = ProductoSerializer
+
+    #Filtro nombre de los productos
+    def get_queryset(self):
+        productos = Producto.objects.all()
+
+        nombre = self.request.GET.get('nombre')
+
+        if nombre:
+            productos = productos.filter(nombreProducto__contains=nombre)
+        
+        return productos
