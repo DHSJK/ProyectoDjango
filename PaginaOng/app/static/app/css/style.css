@@ -199,3 +199,12 @@
   }
 
   
+.descproduct {
+  text-align: center;
+  color:rgb(26, 16, 16);
+}
+
+.textDescProduct {
+  text-align: left;
+  color:rgb(26, 16, 16);
+}
