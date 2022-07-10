@@ -19,13 +19,14 @@ class CustomUserCreationForm(UserCreationForm):
         fields = ['username', "first_name", "last_name", "email", "password1", "password2"]
 
 
-class DonacionForm(ModelForm):
+class DonacionForm(forms.ModelForm):
     class Meta:
         model = Donacion
-        fields = '__all__'
-
+        fields = ['usuarioDonador', 'nombreDonador', 'correoDonador', 'ong', 'monto']
+        #fields = '__all__'
 
 class ProductoForm(forms.ModelForm):
     class Meta:
         model = Producto
         fields = '__all__'
+

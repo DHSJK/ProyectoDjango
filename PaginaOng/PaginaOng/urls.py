@@ -24,7 +24,6 @@ from app.views import organizacion, ong, form_organizacion, form_mod_organizacio
 urlpatterns = [
     path('', include('app.urls')),
     path('admin/', admin.site.urls),
-    path('api/', include('rest_mascotas.urls')),
     path('api/', include('rest_productos.urls')),
     path('api/', include('rest_organizacion.urls')),
     path('organizacion/', organizacion, name="organizacion"),

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 import requests,json
 from app.forms import OrganizacionForm, CustomUserCreationForm, DonacionForm, ProductoForm
-from .models import Mascota, Organizacion, Donacion, Producto
+from .models import Organizacion, Donacion, Producto
 from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
@@ -33,7 +33,19 @@ def nosotros(request):
     return render(request, 'app/inc/nosotros.html')
 
 def donaciones(request):
-    return render(request, 'app/inc/donaciones.html')
+    data = {
+        'form': DonacionForm()
+    }
+
+    if request.method == 'POST':
+        formulario = DonacionForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            data["mensaje"] = "Donación registrada a su cuenta"
+        else:
+            data["form"] = formulario
+
+    return render(request, 'app/inc/donaciones.html', data)
 
 def contacto(request):
     return render(request, 'app/inc/contacto.html')
@@ -47,18 +59,6 @@ def registro(request):
 
 def login(request):
     return render(request, 'app/inc/login.html')
-
-def tabla(request):
-    # mascotas = Mascota.objects.all
-    mascotas = requests.get('http://127.0.0.1:8000/api/lista-mascotas')
-    
-    datos = mascotas.json()
-    data = {
-        'mascotas': datos
-    } 
-    
-    return render(request, 'app/tabla.html', data)
-
 
 
 def tablaproducto(request):
@@ -191,3 +191,4 @@ class ProductoViewset(viewsets.ModelViewSet):
             productos = productos.filter(nombreProducto__contains=nombre)
         
         return productos
+

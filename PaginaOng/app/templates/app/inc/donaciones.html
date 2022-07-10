@@ -62,72 +62,60 @@
       
         <!--    DONACIONES    -->
     
-               
-                    <div class="donaciones">
-                    <h1 class="titulo-donaciones">DONACIONES</h1>  
-                      <div class="col-12">
-                      <form class="row g-3">
-                            
-                            <div class="col-md-6">
-                            <label for="inputnombre" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="inputnombre" required minlength="3" maxlength="30" pattern="[A-Za-z]+">
-                            </div>
-                            <div class="col-md-6">
-                            <label for="inputapellido" class="form-label">Apellido</label>
-                            <input type="text" class="form-control" id="inputapellido" required minlength="3" maxlength="30" pattern="[A-Za-z]+">
-                            </div>
-                            <div class="col-md-6">
-                            <label for="inputTelefono" class="form-label">Teléfono</label>
-                            <input type="text" class="form-control" id="inputTelefono" placeholder="9 1234 5678" required pattern="^[9|8|7|6|5]\d{8}$">
-                            </div>
-                            <div class="col-md-6">
-                            <label for="inputEmail" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="inputEmail" placeholder="tucorreo@dominio.cl" required pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">
-                            </div>
-    
-                            
-                            <div class="col-md-6">
-                                <label class="form-label">Region o Ciudad</label>
-                                <div class="form-control" id='formulario'></div>
-                              </div>
-                              <div class="col-md-6">
-                                <label class="form-label">Comuna</label>
-                                <div class="form-control form-control-lg" id='comunas'></div>
-                            </div>
-    
-                            <div class="col-md-6">
-                                <label for="inputDonacion" class="form-label">Monto a donar</label>
-                            
-                            <div class="input-group mb-3">
-                                <span class="input-group-text">$</span>
-                                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
-                                <span class="input-group-text">Pesos</span>
-                            </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="inputState" class="form-label">Metodo de pago</label>
-                                <select id="inputState" class="form-select">
-                                <option selected>Elegir...</option>
-                                <option>Credito</option>
-                                <option>Debito</option>
-                                <option>Cuenta Corriente</option>
-                                <option>Transferencia Bancaria</option>
-    
-                                </select>
-                            </div>
-                            <div class="col-12">
-                                <label for="inputComentario" class="form-label">Comentario</label>
-                                <textarea class="form-control" id="inputComentario" maxlength="140" rows="5"></textarea>
-                            </div>
-    
-    
-                            <div class="col-12">
-                            <br>
-                            <button type="submit" class="btn btn-primary">DONAR</button>
-                            </div>
-                      </form>
-                      </div>
+        {% load crispy_forms_tags %}
+                    
                      
-                </div>
-
+                    <body>
+                        
+                        <div class="container">
+                            <br>
+                            <div class="row">
+                                <div class="col-12 col-md-6 offset-md-3">
+                                    
+                                        <div class="card">
+                                            
+                                            <div class="card-body">
+                                                <div class="donaciones">    
+                                                    <h1 class="titulo-donaciones">DONACIONES</h1> 
+                                                    <form action="" method="post">
+                                                    
+                                                        {% if user.is_authenticated %}
+                                                        
+                                                        {% csrf_token %}
+                                                        {{ form | crispy }}
+                                                        
+                                                        
+                                                        <br>
+                                                        <a id="#" href="{% url 'index' %}"> 
+                                                        <button id="boton-comprar" type="button" class="btn btn-danger">Volver a Home</button></a>
+                                                            
+                                                        <input type="submit" value="Donar" class="btn btn-success float-right">
+                                                        {% else %}
+                                                        <br>
+                                                        <h2>Para registrar una donación, resgistrate o inicia sesión.</h2>  
+                                                        <br>
+                                                        <a id="#" href="{% url 'registro' %}"> 
+                                                        <button type="button" class="btn btn-primary" data-backdrop="false">Registro</button></a>
+                                                        <a id="#" href="{% url 'login' %}"> 
+                                                        <button id="boton-comprar" type="button" class="btn btn-success">Iniciar Sesión</button></a>
+                                                        {% endif %}
+                                                    
+                            
+                                                    </form>
+                                                    <h4>{{mensaje}}</h4>
+                                                
+                                                </div>
+                                            </div>
+                                        </div>   
+                                    
+                                    
+                                    
+                                </div>  
+                                
+                            </div>
+                    
+                        </div>
+                    </body>
+                
+<br>
  {% endblock %}

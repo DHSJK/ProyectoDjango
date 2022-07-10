@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import index, ong, tienda, nosotros, donaciones, contacto, carrito, tabla, tablaproducto,ProductoViewset,\
+from .views import index, ong, tienda, nosotros, donaciones, contacto, carrito, tablaproducto,ProductoViewset,\
      organizacion,form_organizacion, form_mod_organizacion, form_del_organizacion, registro, login, DonacionViewset
 from django.conf import settings
 from django.conf.urls.static import static
@@ -16,7 +16,6 @@ urlpatterns = [
     path('donaciones/', donaciones, name="donaciones"),
     path('contacto/', contacto, name="contacto"),
     path('carrito/', carrito, name="carrito"),
-    path('tabla/', tabla, name="tabla"),
     path('tablaproducto/', tablaproducto, name="tablaproducto"),
     path('organizacion/', organizacion, name="organizacion"),
     path('form-organizacion/', form_organizacion, name='form_organizacion'),
