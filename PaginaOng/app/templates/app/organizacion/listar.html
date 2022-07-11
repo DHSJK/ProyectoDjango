@@ -1,8 +1,32 @@
 {% extends 'app/base.html' %}
 
 
+
 {% block contenido %}
 {% load static %}
+
+<script>
+      function eliminarOng(idOng){
+            Swal.fire({
+                  "title":"¿Estas seguro?",
+                  "text":"Esta acción no se puede deshacer",
+                  "icon":"question",
+                  "showCancelButton":true,
+                  "cancelButtonText":"No, cancelar.",
+                  "confirmButtonText":"Si, Eliminar.",
+                  "reverseButtons":true,
+                  "confirmButtonColor":"#dc3545"
+
+            })
+            .then(function(result) {
+                  if(result.isConfirmed) {
+                        window.location.href = "/eliminar-ong/"+idOng+"/"
+                  }
+            })
+      }
+
+</script>
+
 <br><br><br><br>
 <div class="row">
       <br><br>
@@ -38,7 +62,7 @@
                                                 <td>{{ o.descripcionOng }}</td>                         
                                                 <td><img src="{{ o.fotoOng}}"  width="200" height="200"></td>
                                                 <td><a href="{% url 'modificar_ong' o.idOng %}" class="btn btn-info btn-sm">Modificar</a></td>
-                                                <td><a href="{% url 'eliminar_ong' o.idOng %}" class="btn btn-danger btn-sm">Eliminar</a></td>
+                                                <td><a href="#" onclick="eliminarOng({{ o.idOng }})" class="btn btn-danger btn-sm">Eliminar</a></td>
 
                                           
                                                 
