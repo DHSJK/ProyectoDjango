@@ -177,8 +177,10 @@
                       <div id="central-content">
 
 
+
+
                         {% block contenido %}
-        
+
 
 
                         {% endblock %}
@@ -222,7 +224,18 @@
         </div>
       </footer>
 
-   
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+      {% if messages %}
+        {% for m in messages %}
+          <script>
+            Swal.fire({
+              "title": "Felicitaciones",
+              "text": "{{m}}",
+              "icon":"success"
+            })
+          </script>
+        {% endfor %}
+      {% endif %}
     </body>
 </html>
       

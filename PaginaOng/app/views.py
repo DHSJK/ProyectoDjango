@@ -33,7 +33,7 @@ def agregar_ong(request):
         formulario = OrganizacionForm(data=request.POST, files=request.FILES)
         if formulario.is_valid():
             formulario.save()
-            data["mensaje"] = "Guardado correctamente"
+            messages.success(request, "ONG agregada correctamente")
         else:
             data["form"] = formulario
 
@@ -61,6 +61,7 @@ def modificar_ong(request, id):
         
         if formulario.is_valid():
             formulario.save()
+            messages.success(request, "Modificado correctamente")
             return redirect(to="listar_ong")
         datos['form'] = formulario
             
@@ -69,10 +70,12 @@ def modificar_ong(request, id):
 def eliminar_ong(request, id):
     
     ong = Organizacion.objects.get(idOng = id)
-    producto.delete()
+    ong.delete()
+    messages.success(request, "Eliminado correctamente")
     return redirect(to="listar_ong")
 
 # FIN ORGANIZACIONES
+
 class DonacionViewset(viewsets.ModelViewSet):
     queryset = Donacion.objects.all()
     serializer_class = DonacionSerializer
@@ -103,7 +106,7 @@ def donaciones(request):
         formulario = DonacionForm(data=request.POST)
         if formulario.is_valid():
             formulario.save()
-            data["mensaje"] = "Donación registrada a su cuenta"
+            messages.success(request, "Donación registrada.")
         else:
             data["form"] = formulario
 
