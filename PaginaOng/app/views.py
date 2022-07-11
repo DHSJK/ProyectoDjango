@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from rest_framework import viewsets
 from .serializers import DonacionSerializer, ProductoSerializer, OrganizacionSerializer
+from app.carrito import Carrito
 
 
 # ORGANIZACIONES
@@ -93,6 +94,28 @@ def tienda(request):
     
     return render(request, 'app/inc/tienda.html', data)
 
+def agregar_producto(request, producto_idProducto):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(idProducto=producto_idProducto)
+    carrito.agregar(producto)
+    return redirect("tienda")
+
+def eliminar_producto(request, producto_idProducto):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=producto_idProducto)
+    carrito.eliminar(producto)
+    return redirect("tienda")
+
+def restar_producto(request, producto_idProducto):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=producto_idProducto)
+    carrito.restar(producto)
+    return redirect("tienda")
+
+def limpiar_carrito(request):
+    carrito = Carrito(request)
+    carrito.limpiar()
+    return redirect("tienda")
 
 def nosotros(request):
     return render(request, 'app/inc/nosotros.html')
@@ -115,8 +138,6 @@ def donaciones(request):
 def contacto(request):
     return render(request, 'app/inc/contacto.html')
 
-def carrito(request):
-    return render(request, 'app/inc/carrito.html')
 
 
 def registro(request):

@@ -1,6 +1,7 @@
 from django.urls import path, include
-from .views import index, tienda, nosotros, donaciones, contacto, carrito, tablaproducto, ProductoViewset,\
-     registro, login, DonacionViewset, OrganizacionViewset, agregar_ong, listar_ong, modificar_ong, eliminar_ong
+from .views import index, tienda, nosotros, donaciones, contacto, tablaproducto, ProductoViewset,\
+    registro, login, DonacionViewset, OrganizacionViewset, agregar_ong, listar_ong, modificar_ong, eliminar_ong, \
+    agregar_producto, eliminar_producto, restar_producto, limpiar_carrito
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework import routers
@@ -18,10 +19,17 @@ urlpatterns = [
     path('listar-ong/', listar_ong, name="listar_ong"),
     path('modificar-ong/<id>/', modificar_ong, name='modificar_ong'),
     path('eliminar-ong/<id>/', eliminar_ong, name='eliminar_ong'),
+    
+    path('agregar/<int:producto_idProducto>/', agregar_producto, name='Add'),
+    path('eliminar/<int:producto_idProducto>/', eliminar_producto, name='Del'),
+    path('restar/<int:producto_idProducto>/', restar_producto, name='Sub'),
+    path('limpiar/', limpiar_carrito, name='CLS'),
+    
+
     path('nosotros/', nosotros, name="nosotros"),
     path('donaciones/', donaciones, name="donaciones"),
     path('contacto/', contacto, name="contacto"),
-    path('carrito/', carrito, name="carrito"),
+   
     path('tablaproducto/', tablaproducto, name="tablaproducto"),
     path('registro/', registro, name="registro"),
     path('login/', login, name="login"),
