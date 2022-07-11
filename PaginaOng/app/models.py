@@ -54,7 +54,7 @@ class Producto(models.Model):
 class Organizacion(models.Model):
     idOng = models.AutoField (primary_key=True, verbose_name='Id de la Ong')
     nombreOng = models.CharField(max_length=40, verbose_name='Nombre de la Ong')
-    fechaOng = models.DateField(verbose_name='Fecha  de la Organizacion')
+    fechaOng = models.DateField(verbose_name='Fecha de Ingreso Ong')
     descripcionOng = models.TextField(verbose_name='Descripcion de la Ong')
     fotoOng = models.ImageField(upload_to="Organizacion", null=True, blank=True)
 

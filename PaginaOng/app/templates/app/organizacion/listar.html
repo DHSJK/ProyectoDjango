@@ -1,0 +1,56 @@
+{% extends 'app/base.html' %}
+
+{% block contenido %}
+{% load static %}
+<br><br><br><br>
+<div class="row">
+      <br><br>
+      <div class="col-12 col-md-6 offset-md-3">
+            <div class="card">
+                  <div class="card-body">
+                  <div class="container">
+                        <div class="row">
+                              <h1>Listado de Organizaciones</h1>
+                        </div>
+                        <div class="row">
+                              <a href="{% url 'agregar_ong' %}"class="btn btn-secondary btn-sm">Agregar Nueva Organizacion</a>
+                              <table class="table table-striped">
+                              <thead>
+                                    <tr>
+                                          <td>ID ONG</td>
+                                          <td>Nombre Organizacion</td>
+                                          <td>Fecha </td>
+                                          <td>Descripcion</td>
+                                          <td>Foto</td>
+                                          <td colspan="2">Opciones</td>
+                                    </tr>
+                              </thead>
+                              {% for o in ong %}
+
+                              <tbody>
+                                    <tr>
+                                          <td>{{ o.idOng }}</td>
+                                          <td>{{ o.nombreOng }}</td>
+                                          <td>{{ o.fechaOng }}</td>
+                                          <td>{{ o.descripcionOng }}</td>                         
+                                          <td><img src="{{ o.fotoOng}}"  width="200" height="200"></td>
+                                          <td><a href="{% url 'modificar_ong' o.idOng %}" class="btn btn-info btn-sm">Modificar</a></td>
+                                          <td><a href="{% url 'eliminar_ong' o.idOng %}" class="btn btn-danger btn-sm">Eliminar</a></td>
+
+                                    
+                                          
+                                    </tr>
+                              </tbody>
+                              {% endfor %}
+                              </table>  
+                        
+                              
+                        </div>
+                  </div>
+            </div>
+                  
+      </div>
+      <br><br><br>
+</div>
+</div>
+{% endblock %}

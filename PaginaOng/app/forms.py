@@ -6,11 +6,15 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 
-class OrganizacionForm(ModelForm):
+class OrganizacionForm(forms.ModelForm):
     
     class Meta:
         model = Organizacion
-        fields = ['idOng','nombreOng', 'fechaOng', 'descripcionOng', 'fotoOng']
+        #fields = ['idOng','nombreOng', 'fechaOng', 'descripcionOng', 'fotoOng']
+        fields = '__all__'
+        widgets = {
+            "fechaOng": forms.SelectDateWidget()
+        }
 
 
 class CustomUserCreationForm(UserCreationForm):

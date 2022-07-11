@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 import requests,json
 from app.forms import OrganizacionForm, CustomUserCreationForm, DonacionForm, ProductoForm
 from .models import Organizacion, Donacion, Producto
@@ -6,11 +6,73 @@ from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from rest_framework import viewsets
-from .serializers import DonacionSerializer, ProductoSerializer
+from .serializers import DonacionSerializer, ProductoSerializer, OrganizacionSerializer
 
 
-# Create your views here.
+# ORGANIZACIONES
+class OrganizacionViewset(viewsets.ModelViewSet):
+    queryset = Organizacion.objects.all()
+    serializer_class = OrganizacionSerializer
 
+    def get_queryset(self):
+        organizaciones = Organizacion.objects.all()
+
+        nombre = self.request.GET.get('nombre')
+
+        if nombre:
+            organizaciones = organizaciones.filter(nombreOng__contains=nombre)
+        
+        return organizaciones
+
+def agregar_ong(request):
+    data = {
+        'form' : OrganizacionForm()
+    }
+
+    if request.method == 'POST':
+        formulario = OrganizacionForm(data=request.POST, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            data["mensaje"] = "Guardado correctamente"
+        else:
+            data["form"] = formulario
+
+    return render(request, 'app/organizacion/agregar.html', data)
+
+def listar_ong(request):
+    ong = requests.get('http://127.0.0.1:8000/api/organizacion/')
+    
+    datos = ong.json()
+    data = {
+        'ong': datos
+    } 
+    
+    return render(request, 'app/organizacion/listar.html', data)
+
+def modificar_ong(request, id):
+    
+    ong = Organizacion.objects.get(idOng = id)
+        
+    data = {
+        'form': OrganizacionForm(instance = ong)
+    }
+    if request.method == 'POST':
+        formulario = OrganizacionForm(data=request.POST, instance = ong, files=request.FILES)
+        
+        if formulario.is_valid():
+            formulario.save()
+            return redirect(to="listar_ong")
+        datos['form'] = formulario
+            
+    return render(request, 'app/organizacion/modificar.html', data)
+
+def eliminar_ong(request, id):
+    
+    ong = Organizacion.objects.get(idOng = id)
+    producto.delete()
+    return redirect(to="listar_ong")
+
+# FIN ORGANIZACIONES
 class DonacionViewset(viewsets.ModelViewSet):
     queryset = Donacion.objects.all()
     serializer_class = DonacionSerializer
@@ -73,91 +135,6 @@ def tablaproducto(request):
     return render(request, 'app/tablaproducto.html', data)
 
 
-
-
-
-
-def organizacion(request):
- 
-    organizacion = requests.get('http://127.0.0.1:8000/api/lista-organizacion')
-    
-    datos = organizacion.json()
-    data = {
-        'organizacion': datos
-    } 
-    
-    return render(request, 'app/organizacion.html', data)
-
-def ong(request):
- 
-    organizacion = requests.get('http://127.0.0.1:8000/api/lista-organizacion')
-    
-    datos = organizacion.json()
-    data = {
-        'organizacion': datos
-    } 
-    
-    return render(request, 'app/organizacion.html', data)
-
-
-
-
-def form_organizacion(request):
-
-    organizacion = requests.get('http://127.0.0.1:8000/api/lista-organizacion')
-
-    datos = {
-        'form': OrganizacionForm
-    }
-    
-    if request.method == 'POST':
-        formulario = OrganizacionForm(request.POST)
-        
-        print(request.POST)
-        print(request.POST['nombreOng'])
-        if formulario.is_valid:
-            
-            Org = Organizacion()
-            Org.nombreOng = request.POST['nombreOng']
-            Org.fechaOng = request.POST['fechaOng']
-            Org.descripcionOng = request.POST['descripcionOng']
-            if len(request.FILES) != 0:
-                Org.fotoOng = request.FILES['fotoOng']
-                Org.save()
-            datos['mensaje'] = 'Guardado Correctamente'
-
-            
-    return render(request, 'app/form_organizacion.html', datos)
-
-
-
-
-def form_mod_organizacion(request, id):
-
-    organizacion = Organizacion.objects.get(idOng = id)
-    
-    datos = {
-        'form': OrganizacionForm(instance = organizacion)
-    }
-    
-    if request.method == 'POST':
-        formulario = OrganizacionForm(data=request.POST, instance = organizacion, files=request.FILES)
-        
-        if formulario.is_valid:
-            formulario.save()
-            datos['mensaje'] = 'Modificado Correctamente'
-        datos['form'] = OrganizacionForm (instance=Organizacion.objects.get(idOng=id))
-            
-    return render(request, 'app/form_organizacion.html', datos)
-
-def form_del_organizacion(request, id):
-    organizacion = Organizacion.objects.get(idOng = id)
-    
-    organizacion.delete()
-    
-    return redirect(to=ong)
-
-
 def registro(request):
     data = {
         'form': CustomUserCreationForm()
@@ -175,8 +152,6 @@ def registro(request):
 
     return render(request, 'registration/registro.html', data)
 
-
-
 class ProductoViewset(viewsets.ModelViewSet):
     queryset = Producto.objects.all()
     serializer_class = ProductoSerializer
@@ -191,4 +166,3 @@ class ProductoViewset(viewsets.ModelViewSet):
             productos = productos.filter(nombreProducto__contains=nombre)
         
         return productos
-

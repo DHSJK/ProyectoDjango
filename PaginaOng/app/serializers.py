@@ -1,5 +1,5 @@
 from dataclasses import fields
-from .models import Donacion, Producto, Marca
+from .models import Donacion, Producto, Marca, Organizacion
 from rest_framework import serializers
 
 class DonacionSerializer(serializers.ModelSerializer):
@@ -36,3 +36,8 @@ class ProductoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Producto
         fields = '__all__'
+
+class OrganizacionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Organizacion
+        fields = ['idOng','nombreOng', 'fechaOng', 'descripcionOng', 'fotoOng']
