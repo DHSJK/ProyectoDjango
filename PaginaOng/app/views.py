@@ -102,13 +102,13 @@ def agregar_producto(request, producto_idProducto):
 
 def eliminar_producto(request, producto_idProducto):
     carrito = Carrito(request)
-    producto = Producto.objects.get(id=producto_idProducto)
+    producto = Producto.objects.get(idProducto=producto_idProducto)
     carrito.eliminar(producto)
     return redirect("tienda")
 
 def restar_producto(request, producto_idProducto):
     carrito = Carrito(request)
-    producto = Producto.objects.get(id=producto_idProducto)
+    producto = Producto.objects.get(idProducto=producto_idProducto)
     carrito.restar(producto)
     return redirect("tienda")
 
