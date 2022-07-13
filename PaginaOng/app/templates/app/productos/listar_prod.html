@@ -37,7 +37,7 @@
                               <h1>Listado de Productos</h1>
                               {% if perms.app.add_productos %}
                               <div class="botonregistro">
-                              <tr><td><a href="{% url 'agregar_producto_tienda' %}" class="btn btn-success btn-sm">Agregar Nueva Organizacion</a></td></tr>
+                              <tr><td><a href="{% url 'agregar_producto_tienda' %}" class="btn btn-success btn-sm">Agregar Nuevo Producto</a></td></tr>
                               {% endif %}
                                     <div class="row">
                                           <div class="col-12">
@@ -45,7 +45,6 @@
                                                       <table class="table">
                                                             <thead>
                                                                   <tr>
-                                                                        <td>ID Producto</td>
                                                                         <td>Nombre Producto</td>
                                                                         <td>Precio </td>
                                                                         <td>Marca</td>
@@ -58,7 +57,6 @@
 
                                                             <tbody>
                                                                   <tr>
-                                                                        <td>{{ p.idProducto }}</td>
                                                                         <td>{{ p.nombreProducto }}</td>
                                                                         <td>${{ p.precioProducto }}</td> 
                                                                         <td>{{ p.marcaProducto.nombreMarca }}</td>                                          
