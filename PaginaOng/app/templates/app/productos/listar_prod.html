@@ -35,8 +35,10 @@
                   <div class="card-body">
                         <div class="container">
                               <h1>Listado de Productos</h1>
+                              {% if perms.app.add_productos %}
                               <div class="botonregistro">
                               <tr><td><a href="{% url 'agregar_producto_tienda' %}" class="btn btn-success btn-sm">Agregar Nueva Organizacion</a></td></tr>
+                              {% endif %}
                                     <div class="row">
                                           <div class="col-12">
                                                 <div class="table-responsive">
@@ -62,10 +64,12 @@
                                                                         <td>{{ p.marcaProducto.nombreMarca }}</td>                                          
                                                                         <td>{{ p.stockProducto }}</td>                     
                                                                         <td><img src="{{ p.fotoProducto}}"  width="200" height="200"></td>
+                                                                        {% if perms.app.change_productos %}
                                                                         <td><a href="{% url 'modificar_producto_tienda' p.idProducto %}" class="btn btn-info btn-sm">Modificar</a>
-                                                                        <br>
-                                                                        <br>
+                                                                        {% endif %}
+                                                                        {% if perms.app.delete_productos %}
                                                                         <a href="#" onclick="eliminarProducto({{ p.idProducto }})" class="btn btn-danger btn-sm">Eliminar</a></td>
+                                                                        {% endif %}
                                                                   </tr>
                                                             </tbody>
                                                             {% endfor %}

@@ -37,7 +37,7 @@ class Producto(models.Model):
     precioProducto = models.IntegerField(verbose_name='Precio del Producto')
     descripcionProducto = models.TextField(verbose_name='Descripcion del Producto')
     marcaProducto = models.ForeignKey(Marca, on_delete=models.PROTECT)
-    stockProducto = models.IntegerField(verbose_name='Cantidad Stock')
+    stockProducto = models.PositiveIntegerField(verbose_name='Cantidad Stock')
     categoriaProducto = models.ForeignKey(Categoria, on_delete=models.PROTECT)
     fotoProducto = models.ImageField(upload_to="productos", null=True)
 

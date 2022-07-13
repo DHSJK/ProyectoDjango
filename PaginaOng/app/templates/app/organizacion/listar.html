@@ -34,8 +34,10 @@
                   <div class="card-body">
                         <div class="container">
                               <h1>Listado de Organizaciones</h1>
+                              {% if perms.app.add_ong %}
                               <div class="botonregistro">
                               <tr><td><a href="{% url 'agregar_ong' %}" class="btn btn-success btn-sm">Agregar Nueva Organizacion</a></td></tr>
+                              {% endif %}
                                     <div class="row">
                                           <div class="col-12">
                                                 <div class="table-responsive">
@@ -60,9 +62,12 @@
                                                                         <td>{{ o.fechaOng }}</td>
                                                                         <td>{{ o.descripcionOng }}</td>                         
                                                                         <td><img src="{{ o.fotoOng}}"  width="200" height="200"></td>
+                                                                        {% if perms.app.change_ong %}
                                                                         <td><a href="{% url 'modificar_ong' o.idOng %}" class="btn btn-info btn-sm">Modificar</a></td>
+                                                                        {% endif %}
+                                                                        {% if perms.app.delete_ong %}
                                                                         <td><a href="#" onclick="eliminarOng({{ o.idOng }})" class="btn btn-danger btn-sm">Eliminar</a></td>
-
+                                                                        {% endif %}
                                                                   
                                                                         
                                                                   </tr>

@@ -8,6 +8,7 @@ from django.contrib.auth import login as auth_login
 from rest_framework import viewsets
 from .serializers import DonacionSerializer, ProductoSerializer, OrganizacionSerializer
 from app.carrito import Carrito
+from django.contrib.auth.decorators import login_required, permission_required
 
 
 # ORGANIZACIONES
@@ -25,6 +26,7 @@ class OrganizacionViewset(viewsets.ModelViewSet):
         
         return organizaciones
 
+@permission_required('app.add_ong')
 def agregar_ong(request):
     data = {
         'form' : OrganizacionForm()
@@ -50,6 +52,7 @@ def listar_ong(request):
     
     return render(request, 'app/organizacion/listar.html', data)
 
+@permission_required('app.change_ong')
 def modificar_ong(request, id):
     
     ong = Organizacion.objects.get(idOng = id)
@@ -68,6 +71,7 @@ def modificar_ong(request, id):
             
     return render(request, 'app/organizacion/modificar.html', data)
 
+@permission_required('app.delete_ong')
 def eliminar_ong(request, id):
     
     ong = Organizacion.objects.get(idOng = id)
@@ -84,6 +88,7 @@ class DonacionViewset(viewsets.ModelViewSet):
 def index(request):
     return render(request, 'app/index.html')
 
+# TIENDA Y CARRITO
 def tienda(request):
     productos = requests.get('http://127.0.0.1:8000/api/producto')
         
@@ -116,7 +121,7 @@ def limpiar_carrito(request):
     carrito = Carrito(request)
     carrito.limpiar()
     return redirect("tienda")
-
+# FIN TIENDA Y CARRITO
 def nosotros(request):
     return render(request, 'app/inc/nosotros.html')
 
@@ -209,10 +214,7 @@ class ProductoViewset(viewsets.ModelViewSet):
         
         return productos
 
-
-
-
-
+@permission_required('app.add_productos')
 def agregar_producto_tienda(request):
     data = {
         'form' : ProductoForm()
@@ -238,6 +240,7 @@ def listar_producto_tienda(request):
     
     return render(request, 'app/productos/listar_prod.html', data)
 
+@permission_required('app.change_productos')
 def modificar_producto_tienda(request, id):
     
     productos = Producto.objects.get(idProducto = id)
@@ -256,6 +259,7 @@ def modificar_producto_tienda(request, id):
             
     return render(request, 'app/productos/modificar_prod.html', data)
 
+@permission_required('app.delete_productos')
 def eliminar_producto_tienda(request, id):
     
     productos = Producto.objects.get(idProducto = id)
