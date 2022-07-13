@@ -1,0 +1,90 @@
+{% extends 'app/base.html' %}
+
+
+
+{% block contenido %}
+{% load static %}
+
+<script>
+      function eliminarProducto(idProducto){
+            Swal.fire({
+                  "title":"¿Estas seguro?",
+                  "text":"Esta acción no se puede deshacer",
+                  "icon":"question",
+                  "showCancelButton":true,
+                  "cancelButtonText":"No, cancelar.",
+                  "confirmButtonText":"Si, Eliminar.",
+                  "reverseButtons":true,
+                  "confirmButtonColor":"#dc3545"
+
+            })
+            .then(function(result) {
+                  if(result.isConfirmed) {
+                        window.location.href = "/eliminar-producto-tienda/"+idProducto+"/"
+                  }
+            })
+      }
+
+</script>
+
+<br><br><br><br>
+<div class="row">
+      <br><br>
+      <div class="col-12 col-md-6 offset-md-3">
+            <div class="card">
+                  <div class="card-body">
+                  <div class="container">
+                        <div class="row">
+                              <h1>Listado de Productos</h1>
+                        </div>
+                        <div class="row">
+                              <div class="botonregistro">
+                                    <tr><td><a href="{% url 'agregar_producto_tienda' %}" class="btn btn-success btn-sm">Agregar Nueva Organizacion</a></td></tr>
+                                    <br>
+                              <table class="table table-responsive table-striped table-bordered">
+                                    <br><thead>
+                                          <tr>
+                                                <td>ID Producto</td>
+                                                <td>Nombre Producto</td>
+                                                <td>Precio </td>
+                                                <td>Marca</td>
+                                                <td>Stock</td>
+                                                <td>Imagen</td>
+                                                <td colspan="2">Opciones</td>
+                                          </tr>
+                                    </thead>
+                                    {% for p in productos %}
+
+                                    <tbody>
+                                          <tr>
+                                                <td>{{ p.idProducto }}</td>
+                                                <td>{{ p.nombreProducto }}</td>
+                                                <td>${{ p.precioProducto }}</td> 
+                                                <td>{{ p.marcaProducto.nombreMarca }}</td>                                          
+                                                <td>{{ p.stockProducto }}</td>                     
+                                                <td><img src="{{ p.fotoProducto}}"  width="200" height="200"></td>
+                                                <td><a href="{% url 'modificar_producto_tienda' p.idProducto %}" class="btn btn-info btn-sm">Modificar</a>
+                                                    <br>
+                                                    <br>
+                                                    
+                                                
+                                                <a href="#" onclick="eliminarProducto({{ p.idProducto }})" class="btn btn-danger btn-sm">Eliminar</a></td>
+
+                                          
+                                                
+                                          </tr>
+                                    </tbody>
+                                    {% endfor %}
+                              </table>  
+                        
+                              
+                        </div>
+                  </div>
+            </div>
+                  
+      </div>
+      <br><br><br>
+</div>
+</div>
+</div>
+{% endblock %}

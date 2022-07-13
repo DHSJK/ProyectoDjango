@@ -190,3 +190,78 @@ class ProductoViewset(viewsets.ModelViewSet):
             productos = productos.filter(nombreProducto__contains=nombre)
         
         return productos
+
+
+
+# PRODUCTOS
+class ProductoViewset(viewsets.ModelViewSet):
+    queryset = Producto.objects.all()
+    serializer_class = ProductoSerializer
+
+    #Filtro nombre de los productos
+    def get_queryset(self):
+        productos = Producto.objects.all()
+
+        nombre = self.request.GET.get('nombre')
+
+        if nombre:
+            productos = productos.filter(nombreProducto__contains=nombre)
+        
+        return productos
+
+
+
+
+
+def agregar_producto_tienda(request):
+    data = {
+        'form' : ProductoForm()
+    }
+
+    if request.method == 'POST':
+        formulario = ProductoForm(data=request.POST, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, "Producto agregado correctamente")
+        else:
+            data["form"] = formulario
+
+    return render(request, 'app/productos/agregar_prod.html', data)
+
+def listar_producto_tienda(request):
+    productos = requests.get('http://127.0.0.1:8000/api/producto/')
+    
+    datos = productos.json()
+    data = {
+        'productos': datos
+    } 
+    
+    return render(request, 'app/productos/listar_prod.html', data)
+
+def modificar_producto_tienda(request, id):
+    
+    productos = Producto.objects.get(idProducto = id)
+        
+    data = {
+        'form': ProductoForm(instance = productos)
+    }
+    if request.method == 'POST':
+        formulario = ProductoForm(data=request.POST, instance = productos, files=request.FILES)
+        
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, "Modificado correctamente")
+            return redirect(to="listar_producto_tienda")
+        datos['form'] = formulario
+            
+    return render(request, 'app/productos/modificar_prod.html', data)
+
+def eliminar_producto_tienda(request, id):
+    
+    productos = Producto.objects.get(idProducto = id)
+    productos.delete()
+    messages.success(request, "Eliminado correctamente")
+    return redirect(to="listar_producto_tienda")
+
+# FIN PRODUCTOS
+

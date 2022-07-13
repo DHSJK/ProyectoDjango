@@ -1,7 +1,9 @@
 from django.urls import path, include
 from .views import index, tienda, nosotros, donaciones, contacto, tablaproducto, ProductoViewset,\
-    registro, login, DonacionViewset, OrganizacionViewset, agregar_ong, listar_ong, modificar_ong, eliminar_ong, \
-    agregar_producto, eliminar_producto, restar_producto, limpiar_carrito
+    registro, login, DonacionViewset, OrganizacionViewset, agregar_ong, listar_ong, modificar_ong, eliminar_ong,\
+    agregar_producto, eliminar_producto, restar_producto, limpiar_carrito,\
+    listar_producto_tienda, agregar_producto_tienda, modificar_producto_tienda, eliminar_producto_tienda
+
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework import routers
@@ -31,6 +33,10 @@ urlpatterns = [
     path('contacto/', contacto, name="contacto"),
    
     path('tablaproducto/', tablaproducto, name="tablaproducto"),
+    path('listar-producto-tienda/', listar_producto_tienda, name="listar_producto_tienda"),
+    path('agregar-producto-tienda/', agregar_producto_tienda, name="agregar_producto_tienda"),
+    path('modificar-producto-tienda/<id>/', modificar_producto_tienda, name='modificar_producto_tienda'),
+    path('eliminar-producto-tienda/<id>/', eliminar_producto_tienda, name='eliminar_producto_tienda'),
     path('registro/', registro, name="registro"),
     path('login/', login, name="login"),
     path('api/', include(router.urls)),   
